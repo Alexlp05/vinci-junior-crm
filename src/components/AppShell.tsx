@@ -15,14 +15,15 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 
-const navItems = [
+type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; hot?: boolean; soon?: boolean };
+const navItems: NavItem[] = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/prospection", label: "Prospection", icon: Flame, hot: true },
   { to: "/leads", label: "Leads", icon: Users },
   { to: "/opportunites", label: "Opportunités", icon: Briefcase },
   { to: "/etudes", label: "Études", icon: FolderKanban, soon: true },
   { to: "/admin", label: "Admin", icon: Shield },
-] as const;
+];
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
